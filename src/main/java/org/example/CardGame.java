@@ -1,11 +1,11 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class CardGame {
-    protected ArrayList<Card> deckOfCards;
+    protected List<Card> deckOfCards;
     protected String name;
     protected int numberOfPlayers;
 
@@ -25,11 +25,11 @@ public abstract class CardGame {
         return name;
     }
 
-    public ArrayList<Card> getDeckOfCards() {
+    public List<Card> getDeckOfCards() {
         return deckOfCards;
     }
 
-    public void setDeckOfCards(ArrayList<Card> deckOfCards) {
+    public void setDeckOfCards(List<Card> deckOfCards) {
         this.deckOfCards = deckOfCards;
     }
 
@@ -37,24 +37,24 @@ public abstract class CardGame {
         return this.getDeckOfCards().get(0);
     }
 
-    public ArrayList<Card> sortDeckInNumberOrder() {
-        ArrayList<Card> sortedInNumberOrder = (ArrayList<Card>) this.getDeckOfCards().stream()
+    public List<Card> sortDeckInNumberOrder() {
+        List<Card> sortedInNumberOrder = this.getDeckOfCards().stream()
                 .sorted((a, b) -> a.getValue() - b.getValue())
                 .collect(Collectors.toList());
         this.setDeckOfCards(sortedInNumberOrder);
         return sortedInNumberOrder;
     }
 
-    public ArrayList<Card> sortDeckIntoSuits() {
-        ArrayList<Card> sortedIntoSuits = (ArrayList<Card>) this.getDeckOfCards().stream()
+    public List<Card> sortDeckIntoSuits() {
+        List<Card> sortedIntoSuits = this.getDeckOfCards().stream()
                 .sorted((a, b) -> a.getSuit().getPriority() - b.getSuit().getPriority())
                 .collect(Collectors.toList());
         this.setDeckOfCards(sortedIntoSuits);
         return sortedIntoSuits;
     }
 
-    public ArrayList<Card> shuffleDeck() {
-        ArrayList<Card> deckOfCards = this.getDeckOfCards();
+    public List<Card> shuffleDeck() {
+        List<Card> deckOfCards = this.getDeckOfCards();
         Collections.shuffle(deckOfCards);
         setDeckOfCards(deckOfCards);
         return deckOfCards;

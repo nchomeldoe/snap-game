@@ -20,4 +20,5 @@ public class Player {
     public void setWinner(boolean winner) {
         this.winner = winner;
     }
+
 }
