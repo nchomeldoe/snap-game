@@ -10,7 +10,7 @@ public class Snap extends CardGame {
 
     public Card playTurn() {
         Scanner scanner = new Scanner(System.in);
-        if(scanner.nextLine() != null) {
+        if (scanner.nextLine() != null) {
             Card cardDealt = dealCard();
             deckOfCards.remove(0);
             System.out.println(cardDealt);
@@ -29,16 +29,14 @@ public class Snap extends CardGame {
         shuffleDeck();
         Card firstCard = playTurn();
         Card secondCard = playTurn();
-            while(!firstCard.getSymbol().equals(secondCard.getSymbol())) {
-
-                firstCard = secondCard;
-                secondCard = playTurn();
-                if(getDeckOfCards().size() == 0) {
-                    resetDeck();
-                    System.out.println("deck reset");
-                }
+        while (!firstCard.getSymbol().equals(secondCard.getSymbol())) {
+            firstCard = secondCard;
+            secondCard = playTurn();
+            if (getDeckOfCards().size() == 0) {
+                resetDeck();
             }
-            System.out.println("Game Over! You win!");
+        }
+        System.out.println("Game Over! You win!");
 
 
     }
