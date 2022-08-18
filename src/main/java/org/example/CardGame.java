@@ -7,10 +7,18 @@ import java.util.stream.Collectors;
 public abstract class CardGame {
     protected ArrayList<Card> deckOfCards;
     protected String name;
+    protected int numberOfPlayers;
 
     public CardGame(String name) {
         this.deckOfCards = CardDeckFactory.createDeckOfCards();
         this.name = name;
+        this.numberOfPlayers = 1;
+    }
+
+    public CardGame(String name, int numberOfPlayers) {
+        this.deckOfCards = CardDeckFactory.createDeckOfCards();
+        this.name = name;
+        this.numberOfPlayers = numberOfPlayers;
     }
 
     public String getName() {

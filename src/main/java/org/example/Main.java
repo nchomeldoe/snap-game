@@ -17,13 +17,17 @@ public class Main {
 //        ArrayList<Card> suitOrder = myCardGame.sortDeckIntoSuits();
 //
 //        System.out.println(originalOrder.equals(suitOrder));
-        Snap snapObject = new Snap("gameOne");
-        System.out.println(snapObject.getName());
-        System.out.println(snapObject.getDeckOfCards());
-        System.out.println(snapObject.getDeckOfCards().size());
+//        Snap snapObject = new Snap("gameOne");
+//        System.out.println(snapObject.getName());
+//        System.out.println(snapObject.getDeckOfCards());
+//        System.out.println(snapObject.getDeckOfCards().size());
+//
+//        snapObject.playGame();
+//        System.out.println(snapObject.getDeckOfCards().size());
 
-        snapObject.playGame();
-        System.out.println(snapObject.getDeckOfCards().size());
+        Snap multiplayerSnapGame = new Snap("gameTwo", 3);
+        multiplayerSnapGame.playMultiPlayerGame();
+
 
     }
 }
