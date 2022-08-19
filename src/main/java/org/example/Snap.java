@@ -2,8 +2,14 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Snap extends CardGame {
+
+    protected boolean gameOver = false;
+
+    protected boolean snapTimeUp = false;
 
     public Snap(String name) {
         super(name);
@@ -14,6 +20,21 @@ public class Snap extends CardGame {
         super(name, numberOfPlayers);
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isSnapTimeUp() {
+        return snapTimeUp;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
+    public void setSnapTimeUp(boolean snapTimeUp) {
+        this.snapTimeUp = snapTimeUp;
+    }
 
     public Card playTurn() {
         Scanner scanner = new Scanner(System.in);
@@ -50,11 +71,44 @@ public class Snap extends CardGame {
     }
 
 
+//    protected void playMultiPlayerGame() {
+//        shuffleDeck();
+//        boolean gameOver = false;
+//        Card existingCard = null;
+//        ArrayList<Player> players = PlayerFactory.createPlayers(this.numberOfPlayers);
+//        while (!gameOver) {
+//            for (Player player : players) {
+//                if (getDeckOfCards().size() == 0) {
+//                    resetDeck();
+//                    existingCard = null;
+//                }
+//                System.out.println(player.getName() + ", press enter to take your turn:");
+//                if (existingCard == null) {
+//                    existingCard = playTurn();
+//                } else {
+//                    Card newCard = playTurn();
+//                    if (existingCard.getSymbol().equals(newCard.getSymbol())) {
+//                        gameOver = true;
+//                        player.setWinner(true);
+//                        System.out.println(player.getName() + " wins! Game over!");
+//                        break;
+//                    } else {
+//                        existingCard = newCard;
+//                    }
+//
+//                }
+//            }
+//        }
+//    }
+
     protected void playMultiPlayerGame() {
         shuffleDeck();
-        boolean gameOver = false;
+        setGameOver(false);
+        setSnapTimeUp(false);
         Card existingCard = null;
         ArrayList<Player> players = PlayerFactory.createPlayers(this.numberOfPlayers);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter snap within two seconds to win if your card has the same value as the last one played.");
         while (!gameOver) {
             for (Player player : players) {
                 if (getDeckOfCards().size() == 0) {
@@ -67,10 +121,26 @@ public class Snap extends CardGame {
                 } else {
                     Card newCard = playTurn();
                     if (existingCard.getSymbol().equals(newCard.getSymbol())) {
-                        gameOver = true;
-                        player.setWinner(true);
-                        System.out.println(player.getName() + " wins! Game over!");
-                        break;
+                        Timer timer = new Timer();
+                        TimerTask task = new TimerTask() {
+                            @Override
+                            public void run() {
+                                setSnapTimeUp(true);
+                                System.out.println("Time's up!");
+                            }
+                        };
+                        timer.schedule(task, 2000);
+                        String input = scanner.nextLine();
+                        timer.cancel();
+                        if(!isSnapTimeUp() && input.equalsIgnoreCase("snap")) {
+                            setGameOver(true);
+                            player.setWinner(true);
+                            System.out.println(player.getName() + " wins! Game over!");
+                            break;
+                        }
+                        else {
+                            System.out.println("Too late! Keep going!");
+                        }
                     } else {
                         existingCard = newCard;
                     }

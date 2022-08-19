@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cf5a3bc-234d-40b7-bdcb-9234b3a2e181" name="Changes" comment="Started writing playMultiPlayerGame method in Snap class">
+    <list default="true" id="5cf5a3bc-234d-40b7-bdcb-9234b3a2e181" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CardDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CardDeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CardGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CardGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Snap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Snap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +38,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "settings.editor.selected.configurable": "inlay.hints"
   }
 }]]></component>
   <component name="RunManager">
@@ -94,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660832100816</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="created playGame method in Snap to change game play depending on number of players">
+      <created>1660838144838</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660838144838</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -112,6 +117,7 @@
     <MESSAGE value="Completed stages 1, 2 and 3" />
     <MESSAGE value="Created player class" />
     <MESSAGE value="Started writing playMultiPlayerGame method in Snap class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started writing playMultiPlayerGame method in Snap class" />
+    <MESSAGE value="created playGame method in Snap to change game play depending on number of players" />
+    <option name="LAST_COMMIT_MESSAGE" value="created playGame method in Snap to change game play depending on number of players" />
   </component>
 </project>
