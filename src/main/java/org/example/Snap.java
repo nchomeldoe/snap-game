@@ -106,48 +106,52 @@ public class Snap extends CardGame {
         setGameOver(false);
         setSnapTimeUp(false);
         Card existingCard = null;
-        ArrayList<Player> players = PlayerFactory.createPlayers(this.numberOfPlayers);
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter snap within two seconds to win if your card has the same value as the last one played.");
-        while (!gameOver) {
-            for (Player player : players) {
-                if (getDeckOfCards().size() == 0) {
-                    resetDeck();
-                    existingCard = null;
-                }
-                System.out.println(player.getName() + ", press enter to take your turn:");
-                if (existingCard == null) {
-                    existingCard = playTurn();
-                } else {
-                    Card newCard = playTurn();
-                    if (existingCard.getSymbol().equals(newCard.getSymbol())) {
-                        Timer timer = new Timer();
-                        TimerTask task = new TimerTask() {
-                            @Override
-                            public void run() {
-                                setSnapTimeUp(true);
-                                System.out.println("Time's up!");
-                            }
-                        };
-                        timer.schedule(task, 2000);
-                        String input = scanner.nextLine();
-                        timer.cancel();
-                        if(!isSnapTimeUp() && input.equalsIgnoreCase("snap")) {
-                            setGameOver(true);
-                            player.setWinner(true);
-                            System.out.println(player.getName() + " wins! Game over!");
-                            break;
-                        }
-                        else {
-                            System.out.println("Too late! Keep going!");
-                        }
-                    } else {
-                        existingCard = newCard;
+        try {
+            ArrayList<Player> players = PlayerFactory.createPlayers(this.numberOfPlayers);
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter snap within two seconds to win if your card has the same value as the last one played.");
+            while (!gameOver) {
+                for (Player player : players) {
+                    if (getDeckOfCards().size() == 0) {
+                        resetDeck();
+                        existingCard = null;
                     }
+                    System.out.println(player.getName() + ", press enter to take your turn:");
+                    if (existingCard == null) {
+                        existingCard = playTurn();
+                    } else {
+                        Card newCard = playTurn();
+                        if (existingCard.getSymbol().equals(newCard.getSymbol())) {
+                            Timer timer = new Timer();
+                            TimerTask task = new TimerTask() {
+                                @Override
+                                public void run() {
+                                    setSnapTimeUp(true);
+                                    System.out.println("Time's up!");
+                                }
+                            };
+                            timer.schedule(task, 2000);
+                            String input = scanner.nextLine();
+                            timer.cancel();
+                            if (!isSnapTimeUp() && input.equalsIgnoreCase("snap")) {
+                                setGameOver(true);
+                                player.setWinner(true);
+                                System.out.println(player.getName() + " wins! Game over!");
+                                break;
+                            } else {
+                                System.out.println("Too late! Keep going!");
+                            }
+                        } else {
+                            existingCard = newCard;
+                        }
 
+                    }
                 }
             }
+        } catch(IllegalArgumentException e) {
+            System.out.println("please enter a name for each player");
         }
+
     }
 
     public void playGame() {
