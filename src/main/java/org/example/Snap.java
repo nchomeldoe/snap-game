@@ -71,36 +71,6 @@ public class Snap extends CardGame {
     }
 
 
-//    protected void playMultiPlayerGame() {
-//        shuffleDeck();
-//        boolean gameOver = false;
-//        Card existingCard = null;
-//        ArrayList<Player> players = PlayerFactory.createPlayers(this.numberOfPlayers);
-//        while (!gameOver) {
-//            for (Player player : players) {
-//                if (getDeckOfCards().size() == 0) {
-//                    resetDeck();
-//                    existingCard = null;
-//                }
-//                System.out.println(player.getName() + ", press enter to take your turn:");
-//                if (existingCard == null) {
-//                    existingCard = playTurn();
-//                } else {
-//                    Card newCard = playTurn();
-//                    if (existingCard.getSymbol().equals(newCard.getSymbol())) {
-//                        gameOver = true;
-//                        player.setWinner(true);
-//                        System.out.println(player.getName() + " wins! Game over!");
-//                        break;
-//                    } else {
-//                        existingCard = newCard;
-//                    }
-//
-//                }
-//            }
-//        }
-//    }
-
     protected void playMultiPlayerGame() {
         shuffleDeck();
         setGameOver(false);
